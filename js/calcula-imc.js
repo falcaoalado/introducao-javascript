@@ -1,11 +1,3 @@
-// Pego o primeiro elemento que seja h1 e guardo numa variável
-var titulo = document.querySelector("h1");
-// Altero o value da primeira tag h1
-titulo.textContent = "orkut";
-
-// Altero o value do primeiro elemento title
-document.querySelector("title").textContent = "Caguei bolinha preta!";
-
 // Pego o primeiro elemento <a> com o atributo target
 var teste = document.querySelector("a[target]");
 console.log(teste);
