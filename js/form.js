@@ -10,6 +10,11 @@ button.addEventListener("click", function(event){
   var paciente = obtemPacienteDoFormulario(form);
   var pacienteTr = montaTr(paciente);
 
+    if (!validaPaciente(paciente)) {
+        console.log("Paciente inválido");
+        return;
+    }
+    
   var tbody = document.querySelector("#tabela-pacientes");
   tbody.appendChild(pacienteTr);
 
@@ -55,4 +60,10 @@ function montaTd(dado, classe) {
   td.classList.add(classe);
 
   return td;
+}
+
+function validaPaciente(paciente) {
+    if (validaPeso(paciente.peso) && validaAltura(paciente.altura)) {
+        return true;
+    }
 }
