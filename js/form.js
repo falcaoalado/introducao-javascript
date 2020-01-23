@@ -4,6 +4,8 @@ button.addEventListener("click", function(event){
   //Previne seu comportamento padrão
   event.preventDefault();
   console.log("Olá, fui clicado!");
+    
+  //limpaErros();
 
   var form = document.querySelector("#adiciona-paciente");
 
@@ -90,3 +92,12 @@ function montaMensagemErro(erros) {
         ulErro.appendChild(li);
     }
 }
+
+/*
+
+função para limpar erros
+
+function limpaErros() {
+    document.querySelector("#mensagem-erro").innerHTML = '';
+}
+*/
