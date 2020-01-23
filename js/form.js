@@ -5,7 +5,7 @@ button.addEventListener("click", function(event){
   event.preventDefault();
   console.log("Olá, fui clicado!");
     
-  //limpaErros();
+  limpaErros();
 
   var form = document.querySelector("#adiciona-paciente");
 
@@ -70,34 +70,42 @@ function validaPaciente(paciente) {
     
     var erros = [];
     
-    if (!validaPeso(paciente.peso)) {
+    if (!validaPeso(paciente.peso) || isVazio(paciente.peso)) {
         erros.push("Peso inválido");
     }
     
-    if (!validaAltura(paciente.altura)) {
+    if (!validaAltura(paciente.altura) || isVazio(paciente.altura)) {
         erros.push("Altura inválida");
     }
     
+    if (isVazio(paciente.nome)) {
+        erros.push("Nome em branco");
+    }
+    
+    if (isVazio(paciente.gordura)) {
+        erros.push("Gordura em branco");
+    }
+    
     return erros;
+}
+
+function isVazio(dado) {
+    return dado.length == 0;
 }
 
 function montaMensagemErro(erros) {
     
     var ulErro = document.querySelector("#mensagem-erro");
     
-    for (var i = 0 ; i < erros.length ; i++) {
-        var li = document.createElement("li");
-        li.textContent = erros[i];
+    //Função forEach no JS
+    erros.forEach(function(erro) {
+       var li = document.createElement("li");
+        li.textContent = erro;
         
-        ulErro.appendChild(li);
-    }
+        ulErro.appendChild(li); 
+    });
 }
-
-/*
-
-função para limpar erros
 
 function limpaErros() {
     document.querySelector("#mensagem-erro").innerHTML = '';
 }
-*/
