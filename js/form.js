@@ -10,20 +10,25 @@ button.addEventListener("click", function(event){
   var form = document.querySelector("#adiciona-paciente");
 
   var paciente = obtemPacienteDoFormulario(form);
-  var pacienteTr = montaTr(paciente);
+    
+  adicionaPacienteNaTabela(paciente);
 
-  var erros = validaPaciente(paciente);
+  form.reset();
+});
+
+function adicionaPacienteNaTabela(paciente) {
+    
+    var erros = validaPaciente(paciente);
     
     if (erros.length > 0) {
         montaMensagemErro(erros);
         return;
     }
     
-  var tbody = document.querySelector("#tabela-pacientes");
-  tbody.appendChild(pacienteTr);
-
-  form.reset();
-});
+    var pacienteTr = montaTr(paciente);
+    var tbody = document.querySelector("#tabela-pacientes");
+    tbody.appendChild(pacienteTr);
+}
 
 function obtemPacienteDoFormulario(form) {
 
